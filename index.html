@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalForge - Dashboard</title>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- App Container -->
+    <div id="app" class="app-container">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://www.genspark.ai/api/files/s/5gB7nTU2" alt="LocalForge" class="sidebar-logo">
+                <button id="sidebar-close" class="sidebar-close mobile-only">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#dashboard" class="nav-link active" data-page="dashboard">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#encontrar-negocios" class="nav-link" data-page="encontrar-negocios">
+                            <i class="fas fa-search"></i>
+                            <span>Encontrar Negócios</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#criar-demonstracao" class="nav-link" data-page="criar-demonstracao">
+                            <i class="fas fa-magic"></i>
+                            <span>Criar Demonstração</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#mensagens" class="nav-link" data-page="mensagens">
+                            <i class="fas fa-comment-dots"></i>
+                            <span>Mensagens</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#historico" class="nav-link" data-page="historico">
+                            <i class="fas fa-history"></i>
+                            <span>Histórico</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#planos" class="nav-link" data-page="planos">
+                            <i class="fas fa-gem"></i>
+                            <span>Plano & Assinatura</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#configuracoes" class="nav-link" data-page="configuracoes">
+                            <i class="fas fa-cog"></i>
+                            <span>Configurações</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="plan-badge">
+                    <i class="fas fa-crown"></i>
+                    <span>Plano Free</span>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button id="menu-toggle" class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <img src="https://www.genspark.ai/api/files/s/5gB7nTU2" alt="LocalForge" class="header-logo mobile-only">
+                </div>
+                
+                <div class="header-right">
+                    <div class="header-user">
+                        <div class="user-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Usuario&background=F59E0B&color=fff&size=40" alt="Avatar">
+                        </div>
+                        <div class="user-info desktop-only">
+                            <span class="user-name">Usuário Demo</span>
+                            <span class="user-email">usuario@email.com</span>
+                        </div>
+                        <div class="header-dropdown">
+                            <button class="dropdown-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="#configuracoes" class="dropdown-item" data-page="configuracoes">
+                                    <i class="fas fa-user"></i> Perfil
+                                </a>
+                                <a href="#" class="dropdown-item" id="logout-btn">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Page Content -->
+            <main id="main-content" class="main-content">
+                <!-- Content will be loaded dynamically -->
+            </main>
+        </div>
+    </div>
+    
+    <!-- Sidebar Overlay (Mobile) -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+    
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <!-- Modal Container -->
+    <div id="modal-container" class="modal-container"></div>
+    
+    <!-- Page Templates -->
+    <!-- Dashboard Page -->
+    <template id="page-dashboard">
+        <div class="page dashboard-page">
+            <div class="page-header">
+                <h1 class="page-title">Dashboard</h1>
+                <p class="page-subtitle">Bem-vindo de volta, <strong>Usuário Demo</strong>! 👋</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(11, 31, 59, 0.1); color: #0B1F3B;">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">12</span>
+                        <span class="stat-label">Buscas Realizadas</span>
+                    </div>
+                    <div class="stat-progress">
+                        <div class="progress-bar" style="width: 60%;"></div>
+                    </div>
+                    <span class="stat-limit">12 de 20 (Free)</span>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: #F59E0B;">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">Demonstrações Criadas</span>
+                    </div>
+                    <div class="stat-progress">
+                        <div class="progress-bar warning" style="width: 100%;"></div>
+                    </div>
+                    <span class="stat-limit">5 de 5 (Free) - Limite atingido</span>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: #10B981;">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">8</span>
+                        <span class="stat-label">Mensagens Geradas</span>
+                    </div>
+                    <div class="stat-progress">
+                        <div class="progress-bar success" style="width: 40%;"></div>
+                    </div>
+                    <span class="stat-limit">8 de 20 (Free)</span>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(139, 92, 246, 0.1); color: #8B5CF6;">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">Free</span>
+                        <span class="stat-label">Plano Atual</span>
+                    </div>
+                    <a href="#planos" class="stat-action" data-page="planos">
+                        Fazer Upgrade <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="dashboard-cta">
+                <div class="cta-card">
+                    <div class="cta-content">
+                        <h2>Encontre novos clientes agora!</h2>
+                        <p>Descubra negócios locais que precisam dos seus serviços digitais.</p>
+                        <a href="#encontrar-negocios" class="btn btn-primary btn-lg" data-page="encontrar-negocios">
+                            <i class="fas fa-search"></i> Encontrar Negócios
+                        </a>
+                    </div>
+                    <div class="cta-illustration">
+                        <i class="fas fa-store"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-sections">
+                <div class="section-card">
+                    <div class="section-header">
+                        <h3><i class="fas fa-clock"></i> Atividade Recente</h3>
+                        <a href="#historico" class="section-link" data-page="historico">Ver tudo</a>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="activity-info">
+                                <span class="activity-title">Busca: Restaurantes em São Paulo</span>
+                                <span class="activity-time">Há 2 horas</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon success">
+                                <i class="fas fa-magic"></i>
+                            </div>
+                            <div class="activity-info">
+                                <span class="activity-title">Demo criada: Pizzaria Bella Napoli</span>
+                                <span class="activity-time">Há 5 horas</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon warning">
+                                <i class="fas fa-comment-dots"></i>
+                            </div>
+                            <div class="activity-info">
+                                <span class="activity-title">Mensagem gerada: Proposta comercial</span>
+                                <span class="activity-time">Ontem</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <div class="section-header">
+                        <h3><i class="fas fa-lightbulb"></i> Dicas Rápidas</h3>
+                    </div>
+                    <div class="tips-list">
+                        <div class="tip-item">
+                            <span class="tip-number">1</span>
+                            <p>Busque negócios em nichos específicos para melhores resultados</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-number">2</span>
+                            <p>Use demonstrações personalizadas para impressionar clientes</p>
+                        </div>
+                        <div class="tip-item">
+                            <span class="tip-number">3</span>
+                            <p>Acompanhe seu histórico para melhorar suas abordagens</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Encontrar Negócios Page -->
+    <template id="page-encontrar-negocios">
+        <div class="page encontrar-page">
+            <div class="page-header">
+                <h1 class="page-title">Encontrar Negócios</h1>
+                <p class="page-subtitle">Descubra negócios locais que precisam de soluções digitais</p>
+            </div>
+            
+            <div class="search-section">
+                <div class="search-card">
+                    <form id="search-business-form" class="search-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cidade">
+                                    <i class="fas fa-map-marker-alt"></i> Cidade
+                                </label>
+                                <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nicho">
+                                    <i class="fas fa-tag"></i> Nicho / Categoria
+                                </label>
+                                <select id="nicho" name="nicho" required>
+                                    <option value="">Selecione um nicho</option>
+                                    <option value="restaurantes">Restaurantes</option>
+                                    <option value="clinicas">Clínicas e Consultórios</option>
+                                    <option value="academias">Academias</option>
+                                    <option value="saloes">Salões de Beleza</option>
+                                    <option value="oficinas">Oficinas Mecânicas</option>
+                                    <option value="petshops">Pet Shops</option>
+                                    <option value="imobiliarias">Imobiliárias</option>
+                                    <option value="escolas">Escolas e Cursos</option>
+                                    <option value="lojas">Lojas de Varejo</option>
+                                    <option value="outros">Outros</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-search"></i> Buscar Negócios
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div id="search-results" class="search-results hidden">
+                <div class="results-header">
+                    <h2><i class="fas fa-building"></i> Resultados da Busca</h2>
+                    <span class="results-count">8 negócios encontrados</span>
+                </div>
+                
+                <div class="business-grid">
+                    <!-- Business cards will be populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Análise do Negócio Page -->
+    <template id="page-analise">
+        <div class="page analise-page">
+            <div class="page-header">
+                <button class="btn btn-ghost back-btn" data-back="encontrar-negocios">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+                <h1 class="page-title">Análise do Negócio</h1>
+            </div>
+            
+            <div class="analise-content">
+                <div class="business-profile">
+                    <div class="business-header-card">
+                        <div class="business-avatar">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="business-info">
+                            <h2 id="analise-business-name">Nome do Negócio</h2>
+                            <p class="business-category"><i class="fas fa-tag"></i> <span id="analise-category">Categoria</span></p>
+                            <div class="business-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span id="analise-rating">4.5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analise-grid">
+                    <div class="analise-card">
+                        <div class="card-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h3>Resumo do Negócio</h3>
+                        </div>
+                        <div class="card-body">
+                            <p id="analise-resumo">Este negócio atua no segmento há mais de 5 anos, com presença local estabelecida mas com pouca visibilidade digital. Possui boas avaliações de clientes mas não maximiza seu potencial online.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="analise-card">
+                        <div class="card-header warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>Oportunidades Identificadas</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="opportunity-list">
+                                <li><i class="fas fa-times-circle"></i> Website desatualizado ou inexistente</li>
+                                <li><i class="fas fa-times-circle"></i> Ausência de sistema de agendamento online</li>
+                                <li><i class="fas fa-times-circle"></i> Redes sociais com pouca frequência</li>
+                                <li><i class="fas fa-times-circle"></i> Sem cardápio/catálogo digital</li>
+                                <li><i class="fas fa-times-circle"></i> Google Meu Negócio incompleto</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="analise-card full-width">
+                        <div class="card-header success">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Sugestão de Solução Digital</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="solution-content">
+                                <p><strong>Pacote Recomendado:</strong> Website + Sistema de Agendamento</p>
+                                <p>Com base na análise, recomendamos criar um site moderno com sistema de reservas integrado, otimização para Google e presença ativa nas redes sociais.</p>
+                                <div class="solution-benefits">
+                                    <div class="benefit">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Aumento de visibilidade</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Mais clientes via Google</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Gestão automatizada</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analise-actions">
+                    <a href="#criar-demonstracao" class="btn btn-primary btn-lg" data-page="criar-demonstracao">
+                        <i class="fas fa-magic"></i> Criar Demonstração
+                    </a>
+                    <button class="btn btn-outline" onclick="app.generateMessage()">
+                        <i class="fas fa-comment-dots"></i> Gerar Mensagem
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Criar Demonstração Page -->
+    <template id="page-criar-demonstracao">
+        <div class="page criar-demo-page">
+            <div class="page-header">
+                <h1 class="page-title">Criar Demonstração</h1>
+                <p class="page-subtitle">Gere uma demonstração personalizada para impressionar seu cliente</p>
+            </div>
+            
+            <div class="demo-wizard">
+                <div class="wizard-steps">
+                    <div class="wizard-step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Tipo de Negócio</span>
+                    </div>
+                    <div class="wizard-step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Informações</span>
+                    </div>
+                    <div class="wizard-step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Personalização</span>
+                    </div>
+                </div>
+                
+                <form id="demo-form" class="demo-form">
+                    <!-- Step 1: Tipo de Negócio -->
+                    <div class="wizard-content active" data-step="1">
+                        <h2>Qual o tipo de negócio?</h2>
+                        <div class="business-type-grid">
+                            <label class="type-card">
+                                <input type="radio" name="tipo_negocio" value="restaurante">
+                                <div class="type-content">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Restaurante</span>
+                                </div>
+                            </label>
+                            <label class="type-card">
+                                <input type="radio" name="tipo_negocio" value="clinica">
+                                <div class="type-content">
+                                    <i class="fas fa-stethoscope"></i>
+                                    <span>Clínica</span>
+                                </div>
+                            </label>
+                            <label class="type-card">
+                                <input type="radio" name="tipo_negocio" value="academia">
+                                <div class="type-content">
+                                    <i class="fas fa-dumbbell"></i>
+                                    <span>Academia</span>
+                                </div>
+                            </label>
+                            <label class="type-card">
+                                <input type="radio" name="tipo_negocio" value="salao">
+                                <div class="type-content">
+                                    <i class="fas fa-cut"></i>
+                                    <span>Salão de Beleza</span>
+                                </div>
+                            </label>
+                            <label class="type-card">
+                                <input type="radio" name="tipo_negocio" value="petshop">
+                                <div class="type-content">
+                                    <i class="fas fa-paw"></i>
+                                    <span>Pet Shop</span>
+                                </div>
+                            </label>
+                            <label class="type-card">
+                                <input type="radio" name="tipo_negocio" value="imobiliaria">
+                                <div class="type-content">
+                                    <i class="fas fa-home"></i>
+                                    <span>Imobiliária</span>
+                                </div>
+                            </label>
+                            <label class="type-card">
+                                <input type="radio" name="tipo_negocio" value="loja">
+                                <div class="type-content">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Loja</span>
+                                </div>
+                            </label>
+                            <label class="type-card">
+                                <input type="radio" name="tipo_negocio" value="outro">
+                                <div class="type-content">
+                                    <i class="fas fa-building"></i>
+                                    <span>Outro</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Informações -->
+                    <div class="wizard-content" data-step="2">
+                        <h2>Informações do Negócio</h2>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="nome_negocio">Nome do Negócio</label>
+                                <input type="text" id="nome_negocio" name="nome_negocio" placeholder="Ex: Pizzaria Bella Napoli">
+                            </div>
+                            <div class="form-group">
+                                <label for="localizacao">Localização</label>
+                                <input type="text" id="localizacao" name="localizacao" placeholder="Ex: São Paulo, SP">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="descricao">Descrição / Diferenciais</label>
+                                <textarea id="descricao" name="descricao" rows="3" placeholder="Descreva os principais diferenciais do negócio..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="publico_alvo">Público-Alvo</label>
+                                <input type="text" id="publico_alvo" name="publico_alvo" placeholder="Ex: Famílias, jovens adultos">
+                            </div>
+                            <div class="form-group">
+                                <label for="servicos">Principais Serviços</label>
+                                <input type="text" id="servicos" name="servicos" placeholder="Ex: Delivery, Eventos">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Personalização -->
+                    <div class="wizard-content" data-step="3">
+                        <h2>Personalização</h2>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="cor_primaria">Cor Primária (opcional)</label>
+                                <input type="color" id="cor_primaria" name="cor_primaria" value="#0B1F3B">
+                            </div>
+                            <div class="form-group">
+                                <label for="cor_secundaria">Cor Secundária (opcional)</label>
+                                <input type="color" id="cor_secundaria" name="cor_secundaria" value="#F59E0B">
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Upload de Imagens (Logo, Fotos)</label>
+                                <div class="upload-area" id="upload-area">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Arraste imagens aqui ou clique para selecionar</p>
+                                    <input type="file" id="file-upload" multiple accept="image/*" hidden>
+                                </div>
+                                <div id="upload-preview" class="upload-preview"></div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="observacoes">Observações Adicionais</label>
+                                <textarea id="observacoes" name="observacoes" rows="3" placeholder="Informações extras que podem ajudar na demonstração..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="wizard-actions">
+                        <button type="button" class="btn btn-outline wizard-prev" disabled>
+                            <i class="fas fa-arrow-left"></i> Anterior
+                        </button>
+                        <button type="button" class="btn btn-primary wizard-next">
+                            Próximo <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button type="submit" class="btn btn-primary btn-lg wizard-submit hidden">
+                            <i class="fas fa-magic"></i> Gerar Demonstração
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Resultado Demo Page -->
+    <template id="page-resultado">
+        <div class="page resultado-page">
+            <div class="page-header">
+                <button class="btn btn-ghost back-btn" data-back="criar-demonstracao">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+                <h1 class="page-title">Demonstração Gerada</h1>
+            </div>
+            
+            <div class="resultado-content">
+                <div class="resultado-card">
+                    <div class="card-header success">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Prompt de Demonstração</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="prompt-area">
+                            <textarea id="prompt-output" readonly>Crie um website moderno e responsivo para a "Pizzaria Bella Napoli", localizada em São Paulo, SP.
+
+CARACTERÍSTICAS DO NEGÓCIO:
+- Tipo: Restaurante / Pizzaria
+- Público-alvo: Famílias e jovens adultos
+- Serviços: Delivery, Eventos, Rodízio
+
+REQUISITOS DO WEBSITE:
+1. Design moderno com as cores #0B1F3B (primária) e #F59E0B (secundária)
+2. Seções: Hero, Sobre, Cardápio, Galeria, Depoimentos, Contato
+3. Sistema de pedidos online integrado
+4. Responsivo para mobile
+5. Botão WhatsApp flutuante
+6. Integração com Google Maps
+
+DIFERENCIAIS A DESTACAR:
+- Massa artesanal feita na hora
+- Ingredientes importados da Itália
+- Ambiente familiar acolhedor
+- Mais de 20 anos de tradição
+
+CALL-TO-ACTIONS:
+- "Peça Agora" (destaque)
+- "Ver Cardápio"
+- "Fazer Reserva"
+
+Tom de comunicação: Acolhedor, tradicional, focado em qualidade e família.</textarea>
+                        </div>
+                        <div class="prompt-actions">
+                            <button class="btn btn-primary" onclick="app.copyPrompt()">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                            <button class="btn btn-outline" onclick="app.exportPDF()">
+                                <i class="fas fa-file-pdf"></i> Exportar PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="next-steps">
+                    <h3>Próximos Passos</h3>
+                    <div class="steps-grid">
+                        <div class="step-card">
+                            <span class="step-num">1</span>
+                            <p>Copie o prompt e use em ferramentas de IA para gerar o site</p>
+                        </div>
+                        <div class="step-card">
+                            <span class="step-num">2</span>
+                            <p>Personalize o resultado conforme necessário</p>
+                        </div>
+                        <div class="step-card">
+                            <span class="step-num">3</span>
+                            <p>Apresente a demonstração ao cliente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Mensagens Page -->
+    <template id="page-mensagens">
+        <div class="page mensagens-page">
+            <div class="page-header">
+                <h1 class="page-title">Message Assist</h1>
+                <p class="page-subtitle">Gere mensagens profissionais para abordar clientes</p>
+            </div>
+            
+            <div class="mensagens-content">
+                <div class="tabs-container">
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="inicial">
+                            <i class="fas fa-hand-wave"></i> Mensagem Inicial
+                        </button>
+                        <button class="tab-btn" data-tab="servico">
+                            <i class="fas fa-briefcase"></i> Apresentar Serviço
+                        </button>
+                        <button class="tab-btn" data-tab="resposta">
+                            <i class="fas fa-reply"></i> Responder Mensagem
+                        </button>
+                    </div>
+                    
+                    <div class="tabs-content">
+                        <!-- Tab: Mensagem Inicial -->
+                        <div class="tab-panel active" data-tab="inicial">
+                            <form class="message-form" data-type="inicial">
+                                <div class="form-group">
+                                    <label for="msg-nome-negocio">Nome do Negócio</label>
+                                    <input type="text" id="msg-nome-negocio" placeholder="Ex: Pizzaria Bella Napoli">
+                                </div>
+                                <div class="form-group">
+                                    <label for="msg-nicho">Nicho</label>
+                                    <input type="text" id="msg-nicho" placeholder="Ex: Restaurante">
+                                </div>
+                                <div class="form-group">
+                                    <label for="msg-tom">Tom da Mensagem</label>
+                                    <select id="msg-tom">
+                                        <option value="profissional">Profissional</option>
+                                        <option value="amigavel">Amigável</option>
+                                        <option value="direto">Direto ao Ponto</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-magic"></i> Gerar Mensagem
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <!-- Tab: Apresentar Serviço -->
+                        <div class="tab-panel" data-tab="servico">
+                            <form class="message-form" data-type="servico">
+                                <div class="form-group">
+                                    <label for="serv-tipo">Tipo de Serviço</label>
+                                    <select id="serv-tipo">
+                                        <option value="website">Criação de Website</option>
+                                        <option value="redesocial">Gestão de Redes Sociais</option>
+                                        <option value="marketing">Marketing Digital</option>
+                                        <option value="branding">Branding</option>
+                                        <option value="pacote">Pacote Completo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="serv-beneficios">Principais Benefícios</label>
+                                    <textarea id="serv-beneficios" rows="3" placeholder="Liste os benefícios do seu serviço..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="serv-preco">Faixa de Preço (opcional)</label>
+                                    <input type="text" id="serv-preco" placeholder="Ex: A partir de R$ 997">
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-magic"></i> Gerar Mensagem
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <!-- Tab: Responder Mensagem -->
+                        <div class="tab-panel" data-tab="resposta">
+                            <form class="message-form" data-type="resposta">
+                                <div class="form-group">
+                                    <label for="resp-mensagem">Mensagem Recebida do Cliente</label>
+                                    <textarea id="resp-mensagem" rows="4" placeholder="Cole aqui a mensagem que você recebeu do cliente..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="resp-objetivo">Seu Objetivo na Resposta</label>
+                                    <select id="resp-objetivo">
+                                        <option value="agendar">Agendar Reunião</option>
+                                        <option value="proposta">Enviar Proposta</option>
+                                        <option value="esclarecer">Esclarecer Dúvidas</option>
+                                        <option value="fechar">Fechar Negócio</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-magic"></i> Gerar Resposta
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="message-result" class="message-result hidden">
+                    <div class="result-header">
+                        <h3><i class="fas fa-comment-dots"></i> Mensagem Gerada</h3>
+                    </div>
+                    <div class="result-body">
+                        <textarea id="message-output" readonly></textarea>
+                        <div class="result-actions">
+                            <button class="btn btn-primary" onclick="app.copyMessage()">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                            <button class="btn btn-outline" onclick="app.regenerateMessage()">
+                                <i class="fas fa-redo"></i> Regenerar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Histórico Page -->
+    <template id="page-historico">
+        <div class="page historico-page">
+            <div class="page-header">
+                <h1 class="page-title">Histórico</h1>
+                <p class="page-subtitle">Veja todas as suas atividades anteriores</p>
+            </div>
+            
+            <div class="historico-content">
+                <div class="filter-bar">
+                    <div class="filter-tabs">
+                        <button class="filter-btn active" data-filter="all">Todos</button>
+                        <button class="filter-btn" data-filter="demos">Demonstrações</button>
+                        <button class="filter-btn" data-filter="mensagens">Mensagens</button>
+                        <button class="filter-btn" data-filter="buscas">Buscas</button>
+                    </div>
+                    <div class="filter-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar no histórico...">
+                    </div>
+                </div>
+                
+                <div class="historico-list">
+                    <div class="historico-item" data-type="demos">
+                        <div class="item-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <div class="item-content">
+                            <h4>Demonstração: Pizzaria Bella Napoli</h4>
+                            <p>Website completo com sistema de pedidos</p>
+                            <span class="item-date">20 Jan 2026, 14:30</span>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn btn-sm btn-ghost" title="Ver"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-sm btn-ghost" title="Copiar"><i class="fas fa-copy"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="historico-item" data-type="mensagens">
+                        <div class="item-icon warning">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <div class="item-content">
+                            <h4>Mensagem Inicial: Academia FitPro</h4>
+                            <p>Abordagem profissional para oferta de website</p>
+                            <span class="item-date">19 Jan 2026, 10:15</span>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn btn-sm btn-ghost" title="Ver"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-sm btn-ghost" title="Copiar"><i class="fas fa-copy"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="historico-item" data-type="buscas">
+                        <div class="item-icon info">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="item-content">
+                            <h4>Busca: Restaurantes em São Paulo</h4>
+                            <p>15 negócios encontrados</p>
+                            <span class="item-date">18 Jan 2026, 16:45</span>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn btn-sm btn-ghost" title="Refazer"><i class="fas fa-redo"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="historico-item" data-type="demos">
+                        <div class="item-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <div class="item-content">
+                            <h4>Demonstração: Salão Beauty Hair</h4>
+                            <p>Landing page com agendamento online</p>
+                            <span class="item-date">17 Jan 2026, 09:20</span>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn btn-sm btn-ghost" title="Ver"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-sm btn-ghost" title="Copiar"><i class="fas fa-copy"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="historico-item" data-type="mensagens">
+                        <div class="item-icon warning">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <div class="item-content">
+                            <h4>Resposta: Clínica Odontológica Sorriso</h4>
+                            <p>Resposta para agendar reunião</p>
+                            <span class="item-date">16 Jan 2026, 11:00</span>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn btn-sm btn-ghost" title="Ver"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-sm btn-ghost" title="Copiar"><i class="fas fa-copy"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="historico-item" data-type="buscas">
+                        <div class="item-icon info">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="item-content">
+                            <h4>Busca: Academias em Campinas</h4>
+                            <p>8 negócios encontrados</p>
+                            <span class="item-date">15 Jan 2026, 14:30</span>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn btn-sm btn-ghost" title="Refazer"><i class="fas fa-redo"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pagination">
+                    <button class="btn btn-ghost" disabled><i class="fas fa-chevron-left"></i></button>
+                    <span class="page-info">Página 1 de 3</span>
+                    <button class="btn btn-ghost"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Planos Page -->
+    <template id="page-planos">
+        <div class="page planos-page">
+            <div class="page-header">
+                <h1 class="page-title">Planos & Assinatura</h1>
+                <p class="page-subtitle">Escolha o plano ideal para acelerar seus resultados</p>
+            </div>
+            
+            <div class="planos-content">
+                <div class="current-plan-banner">
+                    <div class="banner-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="banner-text">
+                        <p>Você está no <strong>Plano Free</strong>. Faça upgrade para desbloquear todos os recursos!</p>
+                    </div>
+                </div>
+                
+                <div class="plans-grid">
+                    <!-- Plano Free -->
+                    <div class="plan-card current">
+                        <div class="plan-header">
+                            <h3>Free</h3>
+                            <p class="plan-price">
+                                <span class="currency">R$</span>
+                                <span class="amount">0</span>
+                                <span class="period">/mês</span>
+                            </p>
+                        </div>
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Até 5 buscas de negócios</li>
+                                <li><i class="fas fa-check"></i> Até 3 demonstrações</li>
+                                <li><i class="fas fa-check"></i> Até 5 mensagens geradas</li>
+                                <li><i class="fas fa-check"></i> Histórico limitado (7 dias)</li>
+                                <li class="disabled"><i class="fas fa-times"></i> Exportação PDF ilimitada</li>
+                                <li class="disabled"><i class="fas fa-times"></i> Suporte prioritário</li>
+                            </ul>
+                        </div>
+                        <div class="plan-action">
+                            <button class="btn btn-outline" disabled>Plano Atual</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Plano Pro -->
+                    <div class="plan-card featured">
+                        <div class="plan-badge">Mais Popular</div>
+                        <div class="plan-header">
+                            <h3>Pro</h3>
+                            <p class="plan-price">
+                                <span class="old-price">R$ 499,90</span>
+                                <span class="currency">R$</span>
+                                <span class="amount">49,90</span>
+                                <span class="period">/mês</span>
+                            </p>
+                        </div>
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Buscas <strong>ilimitadas</strong></li>
+                                <li><i class="fas fa-check"></i> Demonstrações <strong>ilimitadas</strong></li>
+                                <li><i class="fas fa-check"></i> Mensagens <strong>ilimitadas</strong></li>
+                                <li><i class="fas fa-check"></i> Histórico <strong>completo</strong></li>
+                                <li><i class="fas fa-check"></i> Exportação PDF <strong>ilimitada</strong></li>
+                                <li><i class="fas fa-check"></i> Prioridade em novas funcionalidades</li>
+                                <li><i class="fas fa-check"></i> Suporte prioritário</li>
+                            </ul>
+                        </div>
+                        <div class="plan-action">
+                            <button class="btn btn-primary btn-lg">
+                                <i class="fas fa-crown"></i> Fazer Upgrade
+                            </button>
+                        </div>
+                        <p class="plan-guarantee">
+                            <i class="fas fa-shield-alt"></i> Garantia de 7 dias
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="faq-section">
+                    <h3>Perguntas Frequentes</h3>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Posso cancelar a qualquer momento?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Sim! Você pode cancelar sua assinatura a qualquer momento sem compromisso. O acesso continua até o fim do período pago.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Como funciona a garantia?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Oferecemos 7 dias de garantia. Se não ficar satisfeito, devolvemos 100% do valor pago.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Quais formas de pagamento são aceitas?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Aceitamos cartão de crédito, PIX e boleto bancário.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Configurações Page -->
+    <template id="page-configuracoes">
+        <div class="page configuracoes-page">
+            <div class="page-header">
+                <h1 class="page-title">Configurações</h1>
+                <p class="page-subtitle">Gerencie sua conta e preferências</p>
+            </div>
+            
+            <div class="config-content">
+                <div class="config-section">
+                    <div class="section-title">
+                        <i class="fas fa-user"></i>
+                        <h3>Perfil</h3>
+                    </div>
+                    <div class="config-card">
+                        <form class="config-form">
+                            <div class="avatar-upload">
+                                <img src="https://ui-avatars.com/api/?name=Usuario&background=F59E0B&color=fff&size=100" alt="Avatar" class="avatar-preview">
+                                <button type="button" class="btn btn-outline btn-sm">
+                                    <i class="fas fa-camera"></i> Alterar Foto
+                                </button>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="config-nome">Nome Completo</label>
+                                    <input type="text" id="config-nome" value="Usuário Demo">
+                                </div>
+                                <div class="form-group">
+                                    <label for="config-email">E-mail</label>
+                                    <input type="email" id="config-email" value="usuario@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="config-telefone">Telefone</label>
+                                    <input type="tel" id="config-telefone" placeholder="(11) 99999-9999">
+                                </div>
+                                <div class="form-group">
+                                    <label for="config-empresa">Empresa (opcional)</label>
+                                    <input type="text" id="config-empresa" placeholder="Nome da sua empresa">
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Salvar Alterações
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="config-section">
+                    <div class="section-title">
+                        <i class="fas fa-lock"></i>
+                        <h3>Segurança</h3>
+                    </div>
+                    <div class="config-card">
+                        <form class="config-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="config-senha-atual">Senha Atual</label>
+                                    <input type="password" id="config-senha-atual" placeholder="Digite sua senha atual">
+                                </div>
+                                <div class="form-group">
+                                    <label for="config-nova-senha">Nova Senha</label>
+                                    <input type="password" id="config-nova-senha" placeholder="Digite a nova senha">
+                                </div>
+                                <div class="form-group">
+                                    <label for="config-confirmar-senha">Confirmar Nova Senha</label>
+                                    <input type="password" id="config-confirmar-senha" placeholder="Confirme a nova senha">
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-outline">
+                                    <i class="fas fa-key"></i> Alterar Senha
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="config-section">
+                    <div class="section-title">
+                        <i class="fas fa-bell"></i>
+                        <h3>Notificações</h3>
+                    </div>
+                    <div class="config-card">
+                        <div class="toggle-list">
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <span class="toggle-label">Notificações por E-mail</span>
+                                    <span class="toggle-desc">Receba atualizações sobre sua conta</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <span class="toggle-label">Novidades e Dicas</span>
+                                    <span class="toggle-desc">Fique por dentro das novidades do LocalForge</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="toggle-item">
+                                <div class="toggle-info">
+                                    <span class="toggle-label">Alertas de Uso</span>
+                                    <span class="toggle-desc">Aviso quando estiver próximo do limite</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="config-section danger-zone">
+                    <div class="section-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Zona de Perigo</h3>
+                    </div>
+                    <div class="config-card">
+                        <div class="danger-item">
+                            <div class="danger-info">
+                                <h4>Excluir Conta</h4>
+                                <p>Esta ação é irreversível. Todos os seus dados serão permanentemente deletados.</p>
+                            </div>
+                            <button class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Excluir Conta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Main JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/components.js"></script>
+</body>
+</html>

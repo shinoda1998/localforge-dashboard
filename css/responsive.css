@@ -1,0 +1,365 @@
+/* ============================================
+   LocalForge Dashboard - Responsive Styles
+   ============================================ */
+
+/* Large Desktop */
+@media (max-width: 1400px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop */
+@media (max-width: 1200px) {
+    .dashboard-sections {
+        grid-template-columns: 1fr;
+    }
+    
+    .plans-grid {
+        max-width: 100%;
+    }
+    
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    :root {
+        --sidebar-width: 0;
+    }
+    
+    /* Sidebar Mobile */
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .sidebar-close {
+        display: flex;
+    }
+    
+    /* Header */
+    .header {
+        left: 0;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .header-logo {
+        display: block;
+    }
+    
+    /* Mobile Only */
+    .mobile-only {
+        display: flex;
+    }
+    
+    .desktop-only {
+        display: none;
+    }
+    
+    /* Main */
+    .main-wrapper {
+        margin-left: 0;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Análise Grid */
+    .analise-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .analise-card.full-width {
+        grid-column: auto;
+    }
+    
+    /* Plans Grid */
+    .plans-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
+    .plan-card.featured {
+        transform: none;
+        order: -1;
+    }
+    
+    /* Wizard Steps */
+    .wizard-steps {
+        flex-wrap: wrap;
+    }
+    
+    .step-label {
+        display: none;
+    }
+    
+    /* Business Type Grid */
+    .business-type-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 16px;
+    }
+    
+    /* Page Header */
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    /* CTA Card */
+    .cta-card {
+        padding: 24px;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.25rem;
+    }
+    
+    .cta-illustration {
+        display: none;
+    }
+    
+    /* Search Form */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-grid .full-width {
+        grid-column: auto;
+    }
+    
+    /* Business Grid */
+    .business-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Business Header Card */
+    .business-header-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .business-info .business-rating {
+        justify-content: center;
+    }
+    
+    /* Análise Actions */
+    .analise-actions {
+        flex-direction: column;
+    }
+    
+    .analise-actions .btn {
+        width: 100%;
+    }
+    
+    /* Wizard */
+    .demo-wizard {
+        padding: 20px;
+    }
+    
+    .wizard-steps {
+        gap: 8px;
+    }
+    
+    .wizard-step {
+        padding: 8px 12px;
+    }
+    
+    .wizard-actions {
+        flex-direction: column;
+    }
+    
+    .wizard-actions .btn {
+        width: 100%;
+    }
+    
+    /* Steps Grid */
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Tabs */
+    .tabs-nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .tab-btn {
+        padding: 12px 16px;
+        font-size: 0.8125rem;
+    }
+    
+    .tabs-content {
+        padding: 16px;
+    }
+    
+    /* Filter Bar */
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+    }
+    
+    .filter-search {
+        width: 100%;
+    }
+    
+    .filter-search input {
+        width: 100%;
+    }
+    
+    /* Histórico Item */
+    .historico-item {
+        flex-wrap: wrap;
+    }
+    
+    .item-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 8px;
+    }
+    
+    /* Config */
+    .config-card {
+        padding: 16px;
+    }
+    
+    .avatar-upload {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .toggle-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .danger-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .danger-item .btn {
+        width: 100%;
+        margin-top: 12px;
+    }
+    
+    /* Toast */
+    .toast-container {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+    }
+    
+    .toast {
+        max-width: 100%;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .header {
+        padding: 0 16px;
+    }
+    
+    .user-avatar img {
+        width: 36px;
+        height: 36px;
+    }
+    
+    /* Stat Card */
+    .stat-value {
+        font-size: 1.5rem;
+    }
+    
+    /* Business Type Grid */
+    .business-type-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .type-content {
+        padding: 16px 12px;
+    }
+    
+    .type-content i {
+        font-size: 1.5rem;
+    }
+    
+    /* Plan Price */
+    .plan-price .amount {
+        font-size: 2.5rem;
+    }
+    
+    /* Result Actions */
+    .prompt-actions,
+    .result-actions {
+        flex-direction: column;
+    }
+    
+    .prompt-actions .btn,
+    .result-actions .btn {
+        width: 100%;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .sidebar,
+    .header,
+    .sidebar-overlay,
+    .toast-container {
+        display: none !important;
+    }
+    
+    .main-wrapper {
+        margin-left: 0 !important;
+    }
+    
+    .main-content {
+        margin-top: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .page {
+        max-width: 100%;
+    }
+    
+    .btn {
+        display: none !important;
+    }
+}
